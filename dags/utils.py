@@ -13,9 +13,8 @@ def _local_to_s3(
     s3.load_file(
         filename=file_name, bucket_name=bucket_name, replace=True, key=key
     )
-    if remove_local:
-        if os.path.isfile(file_name):
-            os.remove(file_name)
+    if remove_local and os.path.isfile(file_name):
+        os.remove(file_name)
 
 
 def run_redshift_external_query(qry: str) -> None:
